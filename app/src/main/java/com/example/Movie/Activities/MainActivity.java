@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,12 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         movieList = getMovies();
 
-        movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this, movieList);
-        recyclerView.setAdapter(movieRecyclerViewAdapter);
-        movieRecyclerViewAdapter.notifyDataSetChanged();
-
+            movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this, movieList);
+            recyclerView.setAdapter(movieRecyclerViewAdapter);
+            movieRecyclerViewAdapter.notifyDataSetChanged();
     }
-
 
 
     @Override
