@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MovieDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/coverImageID"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/posterImageID"
+            android:layout_width="110dp"
+            android:layout_height="160dp"
+            android:layout_below="@+id/coverImageID"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/movieNameID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coverImageID"
+            android:padding="8dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/directedByID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movieNameID"
+            android:paddingLeft="12dp"
+            android:paddingTop="8dp"
+            android:text="@string/directed_by" />
+
+        <TextView
+            android:id="@+id/directedID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/directedByID"
+            android:paddingLeft="12dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/yearReleaseID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/directedID"
+            android:layout_marginTop="12dp"
+            android:paddingLeft="12dp" />
+
+        <TextView
+            android:id="@+id/durationID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/directedID"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/yearReleaseID" />
+
+        <TextView
+            android:id="@+id/overviewID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/posterImageID"
+            android:padding="12dp" />
+
+    </RelativeLayout>
+</LinearLayout>
