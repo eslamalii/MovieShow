@@ -57,7 +57,7 @@ public class MovieDetails extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    movieTitle.setText(response.getString("original_title"));
+                    movieTitle.setText(response.getString("title"));
                     movieYear.setText(response.getString("release_date"));
                     runTime.setText(response.getString("runtime") + "mins");
                     overview.setText(response.getString("overview"));

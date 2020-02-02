@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         movieList = getMovies();
 
-            movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this, movieList);
-            recyclerView.setAdapter(movieRecyclerViewAdapter);
-            movieRecyclerViewAdapter.notifyDataSetChanged();
+        movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this, movieList);
+        recyclerView.setAdapter(movieRecyclerViewAdapter);
+        movieRecyclerViewAdapter.notifyDataSetChanged();
     }
 
 
