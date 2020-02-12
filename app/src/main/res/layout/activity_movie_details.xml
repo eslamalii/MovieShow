@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="8dp"
     android:background="@color/dark"
     tools:context=".Activities.MovieDetails">
 
@@ -24,6 +23,7 @@
             android:layout_below="@+id/coverImageID"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-35dp"
+            android:layout_marginHorizontal="12dp"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -33,6 +33,7 @@
             android:layout_below="@+id/coverImageID"
             android:layout_alignStart="@+id/posterImageID"
             android:layout_alignParentStart="true"
+            android:paddingHorizontal="12dp"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movieNameID"
+            android:paddingHorizontal="12dp"
             android:paddingTop="8dp"
             android:text="@string/directed_by"
             android:textColor="@color/white" />
@@ -50,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/directedByID"
+            android:paddingHorizontal="12dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -59,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/directedID"
             android:layout_marginTop="12dp"
+            android:paddingHorizontal="12dp"
             android:textColor="@color/white" />
 
         <TextView
@@ -68,6 +72,7 @@
             android:layout_below="@+id/directedID"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/yearReleaseID"
+            android:paddingHorizontal="12dp"
             android:textColor="@color/white" />
 
         <TextView
@@ -75,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/durationID"
+            android:paddingHorizontal="12dp"
             android:paddingTop="8dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -85,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tagLine"
             android:layout_centerHorizontal="true"
+            android:paddingHorizontal="12dp"
             android:textColor="@color/white" />
     </RelativeLayout>
 </LinearLayout>

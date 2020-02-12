@@ -33,6 +33,7 @@
             android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:textSize="18sp"
             android:text="Discover"
             android:textStyle="bold" />
 
