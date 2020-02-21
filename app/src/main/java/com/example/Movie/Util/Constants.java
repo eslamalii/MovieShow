@@ -7,4 +7,10 @@ public class Constants {
 
     public static final String URL_MOVIE = "https://api.themoviedb.org/3/movie/";
 
+    public static final String URL_TV = "https://api.themoviedb.org/3/discover/tv";
+    public static final String URL_DETAIL = "&language=en-US&sort_by=first_air_date.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false";
+
+
+
+
 }

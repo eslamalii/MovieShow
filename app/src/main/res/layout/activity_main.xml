@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/dark"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
     tools:context=".Activities.MainActivity">
 
     <!--  <com.google.android.material.appbar.AppBarLayout
@@ -33,12 +34,11 @@
             android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="18sp"
-            android:text="Discover"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:text="POPULAR THIS WEEK" />
 
         <include layout="@layout/content_main" android:layout_below="@+id/discover"
-            android:layout_height="match_parent" android:layout_width="match_parent" />
+            android:layout_height="wrap_content" android:layout_width="match_parent" />
 
     </RelativeLayout>
 
