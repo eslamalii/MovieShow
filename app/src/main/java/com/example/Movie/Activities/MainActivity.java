@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         movieList = new ArrayList<>();
 
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(movieRecyclerViewAdapter);
         movieRecyclerViewAdapter.notifyDataSetChanged();
     }
-
 
 
     @Override
