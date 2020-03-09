@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         Movie movie = new Movie();
                         movie.setPoster(object.getString("poster_path"));
                         movie.setImdbId(object.getString("id"));
+                        movie.setTitle(object.getString("title"));
 
                         movieList.add(movie);
                     }
@@ -128,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);
 
         return movieList;
+
+
     }
 
 

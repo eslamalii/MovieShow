@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,9 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
                 .load(posterLink)
                 .into(holder.poster);
 
+        holder.name.setText(movie.getTitle());
+
+
     }
 
     @Override
@@ -55,12 +59,14 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView poster;
+        TextView name;
 
         public ViewHolder(@NonNull final View view, final Context ctx) {
             super(view);
             context = ctx;
 
             poster = view.findViewById(R.id.moviePosterID);
+            name = view.findViewById(R.id.movieNameID);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
