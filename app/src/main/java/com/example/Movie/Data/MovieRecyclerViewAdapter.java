@@ -47,6 +47,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
                 .into(holder.poster);
 
         holder.name.setText(movie.getTitle());
+        holder.overview.setText(movie.getPlot());
 
 
     }
@@ -60,6 +61,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
         ImageView poster;
         TextView name;
+        TextView overview;
 
         public ViewHolder(@NonNull final View view, final Context ctx) {
             super(view);
@@ -67,6 +69,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
             poster = view.findViewById(R.id.moviePosterID);
             name = view.findViewById(R.id.movieNameID);
+            overview = view.findViewById(R.id.movieOverviewID);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

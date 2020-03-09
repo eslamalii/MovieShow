@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         movie.setPoster(object.getString("poster_path"));
                         movie.setImdbId(object.getString("id"));
                         movie.setTitle(object.getString("title"));
+                        movie.setPlot(object.getString("overview"));
 
                         movieList.add(movie);
                     }
