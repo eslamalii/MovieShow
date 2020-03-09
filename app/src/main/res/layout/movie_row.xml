@@ -31,7 +31,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/moviePosterID"
                 android:paddingLeft="8dp"
-                android:text="kshgjkfdhjghkdjfgh"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />
