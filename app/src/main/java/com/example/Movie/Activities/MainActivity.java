@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Movie.Data.MovieRecyclerViewAdapter;
+import com.example.Movie.Data.Volleysingleton;
 import com.example.Movie.Model.Movie;
 import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        queue = Volley.newRequestQueue(this);
+        queue = Volleysingleton.getInstance(this).getRequestQueue();
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
