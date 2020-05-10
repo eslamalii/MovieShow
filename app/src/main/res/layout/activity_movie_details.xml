@@ -6,6 +6,10 @@
     android:background="@color/dark"
     tools:context=".Activities.MovieDetails">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <ImageView
         android:id="@+id/coverImageID"
         android:layout_width="fill_parent"

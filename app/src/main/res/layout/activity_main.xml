@@ -3,27 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/dark"
     android:layout_height="match_parent"
+    android:background="@color/dark"
     android:paddingTop="10dp"
     tools:context=".Activities.MainActivity">
 
-    <!--  <com.google.android.material.appbar.AppBarLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:theme="@style/AppTheme.AppBarOverlay">
 
-          <androidx.appcompat.widget.Toolbar
-              android:id="@+id/toolbar"
-              android:layout_width="match_parent"
-              android:layout_height="?attr/actionBarSize"
-              android:background="?attr/colorPrimary"
-              android:elevation="8dp"
-              app:popupTheme="@style/AppTheme.PopupOverlay"
-              app:titleTextColor="@android:color/black" />
 
-      </com.google.android.material.appbar.AppBarLayout>
-  -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,14 +17,17 @@
         <TextView
             android:id="@+id/discover"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="12sp"
-            android:text="POPULAR THIS WEEK" />
+            android:text="POPULAR THIS WEEK"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
-        <include layout="@layout/content_main" android:layout_below="@+id/discover"
-            android:layout_height="wrap_content" android:layout_width="match_parent" />
+        <include
+            layout="@layout/content_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/discover" />
 
     </RelativeLayout>
 

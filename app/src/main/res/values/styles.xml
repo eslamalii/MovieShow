@@ -8,8 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TransparentActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:background">@android:color/transparent</item>
+    <style name="AppTheme.NoActionbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 
