@@ -1,7 +1,9 @@
 package com.example.Movie.Activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,8 @@ public class MovieDetails extends AppCompatActivity {
     private RequestQueue queue;
     private String movieId;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,8 @@ public class MovieDetails extends AppCompatActivity {
 
         setUpUI();
         getMoviesDetails(movieId);
+        progressBar = findViewById(R.id.progressBar);
+//        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void getMoviesDetails(String id) {
