@@ -24,7 +24,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private MovieRecyclerViewAdapter movieRecyclerViewAdapter;
     private List<Movie> movieList;
     private RequestQueue queue;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -46,12 +49,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        progressBar = findViewById(R.id.progressBar);
 
         queue = Volleysingleton.getInstance(this).getRequestQueue();
-
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -119,22 +119,19 @@ public class MainActivity extends AppCompatActivity {
 
                         movieList.add(movie);
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(MainActivity.this, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(jsonObjectRequest);
 
         return movieList;
-
 
     }
 

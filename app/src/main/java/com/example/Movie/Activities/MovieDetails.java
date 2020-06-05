@@ -53,7 +53,6 @@ public class MovieDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
 
         queue = Volley.newRequestQueue(this);
 
@@ -65,6 +64,8 @@ public class MovieDetails extends AppCompatActivity {
         getMoviesDetails(movieId);
         progressBar = findViewById(R.id.progressBar);
 //        progressBar.setVisibility(View.INVISIBLE);
+
+
     }
 
     private void getMoviesDetails(String id) {

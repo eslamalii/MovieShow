@@ -42,13 +42,12 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         Movie movie = moviesList.get(position);
         String posterLink = "https://image.tmdb.org/t/p/w500" + movie.getPoster();
 
-        Picasso.get()
-                .load(posterLink)
-                .into(holder.poster);
-
         holder.name.setText(movie.getTitle());
         holder.overview.setText(movie.getPlot());
 
+        Picasso.get()
+                .load(posterLink)
+                .into(holder.poster);  
 
     }
 
