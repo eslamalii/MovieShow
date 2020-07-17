@@ -1,171 +1,66 @@
 package com.example.Movie.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class Movie implements Serializable {
     private static final long id = 1L;
 
-    private String title;
-    private String director;
-    private String year;
-    private String runTime;
-    private String imdbId;
-    private String poster;
-    private String genre;
-    private String writer;
-    private String actors;
-    private String plot;
-    private String rating;
-    private String dvdRelease;
-    private String productionCompany;
-    private String country;
-    private String awards;
-    private String tvRated;
+    private String page;
 
-    public Movie() {
+    private String total_pages;
+
+    private List<Results> results;
+
+    private String total_results;
+
+    public String getPage ()
+    {
+        return page;
     }
 
-    public static long getId() {
-        return id;
+    public void setPage (String page)
+    {
+        this.page = page;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTotal_pages ()
+    {
+        return total_pages;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTotal_pages (String total_pages)
+    {
+        this.total_pages = total_pages;
     }
 
-    public String getDirector() {
-        return director;
+    public List<Results> getResults ()
+    {
+        return results;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setResults (List<Results> results)
+    {
+        this.results = results;
     }
 
-    public String getYear() {
-        return year;
+    public String getTotal_results ()
+    {
+        return total_results;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setTotal_results (String total_results)
+    {
+        this.total_results = total_results;
     }
 
-    public String getRunTime() {
-        return runTime;
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [page = "+page+", total_pages = "+total_pages+", results = "+results+", total_results = "+total_results+"]";
     }
-
-    public void setRunTime(String runTime) {
-        this.runTime = runTime;
-    }
-
-    public String getImdbId() {
-        return imdbId;
-    }
-
-    public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
-
-    public String getActors() {
-        return actors;
-    }
-
-    public void setActors(String actors) {
-        this.actors = actors;
-    }
-
-    public String getPlot() {
-        return plot;
-    }
-
-    public void setPlot(String plot) {
-        this.plot = plot;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public String getDvdRelease() {
-        return dvdRelease;
-    }
-
-    public void setDvdRelease(String dvdRelease) {
-        this.dvdRelease = dvdRelease;
-    }
-
-    public String getProductionCompany() {
-        return productionCompany;
-    }
-
-    public void setProductionCompany(String productionCompany) {
-        this.productionCompany = productionCompany;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getAwards() {
-        return awards;
-    }
-
-    public void setAwards(String awards) {
-        this.awards = awards;
-    }
-
-    public String getTvRated() {
-        return tvRated;
-    }
-
-    public void setTvRated(String tvRated) {
-        this.tvRated = tvRated;
-    }
-
-    public String getMovieType() {
-        return movieType;
-    }
-
-    public void setMovieType(String movieType) {
-        this.movieType = movieType;
-    }
-
-    private String movieType;
 
 
 }

@@ -57,7 +57,7 @@ public class MovieDetails extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
 
         movie = (Movie) getIntent().getSerializableExtra("movie");
-        movieId = movie.getImdbId();
+//        movieId = movie.getImdbId();
 
 
         setUpUI();

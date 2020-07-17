@@ -13,41 +13,36 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Movie.Activities.MovieDetails;
 import com.example.Movie.Model.Movie;
+import com.example.Movie.Model.Results;
 import com.example.Movie.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
-    private Context context;
-    private List<Movie> moviesList;
+    public ArrayList<Results> moviesList = new ArrayList<>();
 
-    public MovieRecyclerViewAdapter(Context context, List<Movie> movies) {
-        this.context = context;
-        this.moviesList = movies;
-    }
 
     @NonNull
     @Override
     public MovieRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false);
-
-        return new ViewHolder(view, context);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MovieRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        Movie movie = moviesList.get(position);
-        String posterLink = "https://image.tmdb.org/t/p/w500" + movie.getPoster();
+        Results movie = moviesList.get(position);
+        String posterLink = "https://image.tmdb.org/t/p/w500" + movie.getPoster_path();
 
-        holder.name.setText(movie.getTitle());
-        holder.overview.setText(movie.getPlot());
+        holder.name.setText(movie.getOriginal_title());
+        holder.overview.setText(movie.getOverview());
 
         Picasso.get()
                 .load(posterLink)
-                .into(holder.poster);  
+                .into(holder.poster);
 
     }
 
@@ -56,39 +51,40 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         return moviesList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public void setMoviesList(ArrayList<Results> list){
+        this.moviesList = list;
+        notifyDataSetChanged();
+    }
+
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView poster;
         TextView name;
         TextView overview;
 
-        public ViewHolder(@NonNull final View view, final Context ctx) {
+        public ViewHolder(@NonNull final View view) {
             super(view);
-            context = ctx;
 
             poster = view.findViewById(R.id.moviePosterID);
             name = view.findViewById(R.id.movieNameID);
             overview = view.findViewById(R.id.movieOverviewID);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Movie movie = moviesList.get(getAdapterPosition());
-
-                    Intent intent = new Intent(context, MovieDetails.class);
-
-                    intent.putExtra("movie", movie);
-                    ctx.startActivity(intent);
-
-
-                }
-            });
-        }
-
-        @Override
-        public void onClick(View v) {
-
+//            view.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Movie movie = moviesList.get(getAdapterPosition());
+//
+//                    Intent intent = new Intent(context, MovieDetails.class);
+//
+//                    intent.putExtra("movie", movie);
+//                    ctx.startActivity(intent);
+//
+//
+//                }
+//        });
         }
     }
 }
