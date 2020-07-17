@@ -27,9 +27,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<Movie> movieList;
-    private RequestQueue queue;
-    private ProgressBar progressBar;
     private MoviesViewModel moviesViewModel;
 
 
@@ -37,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        progressBar = findViewById(R.id.progressBar);
-
-//        queue = Volleysingleton.getInstance(this).getRequestQueue();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-//
-//        movieList = new ArrayList<>();
-//
-//        movieList = getMovies();
 
         final MovieRecyclerViewAdapter movieRecyclerViewAdapter = new MovieRecyclerViewAdapter();
         recyclerView.setAdapter(movieRecyclerViewAdapter);
@@ -98,43 +87,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    public List<Movie> getMovies() {
-//        movieList.clear();
-//
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-//                Constants.URL_LEFT + Constants.API + Constants.URL_RIGHT, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                try {
-//                    JSONArray moviesArray = response.getJSONArray("results");
-//
-//                    for (int i = 0; i < moviesArray.length(); i++) {
-//                        JSONObject object = moviesArray.getJSONObject(i);
-//
-//                        Movie movie = new Movie();
-//                        movie.setPoster(object.getString("poster_path"));
-//                        movie.setImdbId(object.getString("id"));
-//                        movie.setTitle(object.getString("title"));
-//                        movie.setPlot(object.getString("overview"));
-//
-//                        movieList.add(movie);
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(MainActivity.this, "That didn't work!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        queue.add(jsonObjectRequest);
-//
-//        return movieList;
-//
-//    }
-
 
 }
