@@ -1,14 +1,9 @@
 package com.example.Movie.Activities;
 
 import android.os.Bundle;
-
-import com.android.volley.RequestQueue;
-import com.example.Movie.Data.MovieRecyclerViewAdapter;
-import com.example.Movie.Model.Movie;
-import com.example.Movie.Model.Results;
-import com.example.Movie.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -16,10 +11,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ProgressBar;
+import com.example.Movie.Data.MovieRecyclerViewAdapter;
+import com.example.Movie.Model.Results;
+import com.example.Movie.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
