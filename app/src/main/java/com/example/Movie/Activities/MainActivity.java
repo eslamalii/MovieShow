@@ -2,6 +2,7 @@ package com.example.Movie.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MovieRecyclerViewAdapter.OnMovieListener {
 
     private static final String TAG = "TEST";
-    private ArrayList<Results> moviesList = new ArrayList<>();
+    private ArrayList<Results> moviesList;
     private RecyclerView recyclerView;
     private MoviesViewModel moviesViewModel;
     MovieRecyclerViewAdapter movieRecyclerViewAdapter;
@@ -86,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
 
     @Override
     public void OnMovieClick(int position) {
-        Log.d(TAG, "OnMovieClick: Clicked");
+        Results results = movieRecyclerViewAdapter.getMoviesList().get(position);
+        Intent intent = new Intent(this, MovieDetails.class);
+        intent.putExtra("Movie Object", results);
+
+        startActivity(intent);
+//        Log.d(TAG, "OnMovieClick: Clicked" + movieRecyclerViewAdapter.getMoviesList().get(position).getTitle());
     }
 }

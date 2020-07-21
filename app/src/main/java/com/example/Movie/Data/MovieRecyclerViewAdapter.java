@@ -22,6 +22,9 @@ import java.util.List;
 
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
     private ArrayList<Results> moviesList = new ArrayList<>();
+
+
+
     private OnMovieListener onMovieListener;
 
     public MovieRecyclerViewAdapter(OnMovieListener onMovieListener) {
@@ -59,6 +62,10 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public void setMoviesList(ArrayList<Results> list) {
         this.moviesList = list;
         notifyDataSetChanged();
+    }
+
+    public ArrayList<Results> getMoviesList() {
+        return moviesList;
     }
 
 

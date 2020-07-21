@@ -1,5 +1,6 @@
 package com.example.Movie.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.Movie.Model.Movie;
+import com.example.Movie.Model.Results;
 import com.example.Movie.R;
 
 public class MovieDetails extends AppCompatActivity {
@@ -39,62 +41,27 @@ public class MovieDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        setUpUI();
 
-        movie = (Movie) getIntent().getSerializableExtra("movie");
-//        movieId = movie.getImdbId();
+        Intent intent = getIntent();
+        Results results = intent.getParcelableExtra("Movie Object");
 
-//
-//        setUpUI();
-//        getMoviesDetails(movieId);
-//        progressBar = findViewById(R.id.progressBar);
-////        progressBar.setVisibility(View.INVISIBLE);
-
-
+        movieTitle.setText(results.getTitle());
+        movieYear.setText(results.getRelease_date());
+        overview.setText(results.getOverview());
+        runTime.setText(results.getPopularity());
+        tagline.setText(results.getAdult());
     }
 
-//    private void getMoviesDetails(String id) {
-//
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-//                Constants.URL_MOVIE + id + Constants.API, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                try {
-//                    movieTitle.setText(response.getString("title"));
-//                    movieYear.setText(response.getString("release_date"));
-//                    runTime.setText(response.getString("runtime") + "mins");
-//                    overview.setText(response.getString("overview"));
-//                    tagline.setText(response.getString("tagline"));
-//
-//                    Picasso.get()
-//                            .load("https://image.tmdb.org/t/p/w500" + response.getString("poster_path"))
-//                            .into(posterImage);
-//
-//                    Picasso.get()
-//                            .load("https://image.tmdb.org/t/p/w500" + response.getString("backdrop_path"))
-//                            .into(coverImage);
-//
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d("Error: " + error.getMessage());
-//            }
-//        });
-//        queue.add(jsonObjectRequest);
-//    }
-//
-//    private void setUpUI() {
-//        movieTitle = findViewById(R.id.movieNameID);
-//        coverImage = findViewById(R.id.coverImageID);
-//        posterImage = findViewById(R.id.posterImageID);
-//        movieYear = findViewById(R.id.yearReleaseID);
-//        director = findViewById(R.id.directedID);
-//        overview = findViewById(R.id.overviewID);
-//        runTime = findViewById(R.id.durationID);
-//        tagline = findViewById(R.id.tagLine);
-//    }
+    private void setUpUI () {
+        movieTitle = findViewById(R.id.movieNameID);
+        coverImage = findViewById(R.id.coverImageID);
+        posterImage = findViewById(R.id.posterImageID);
+        movieYear = findViewById(R.id.yearReleaseID);
+        director = findViewById(R.id.directedID);
+        overview = findViewById(R.id.overviewID);
+        runTime = findViewById(R.id.durationID);
+        tagline = findViewById(R.id.tagLine);
+
+    }
 }
