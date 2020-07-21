@@ -1,11 +1,15 @@
 package com.example.Movie.Activities;
 
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.Movie.BR;
 import com.example.Movie.Data.MoviesClient;
 import com.example.Movie.Model.Movie;
 import com.example.Movie.Model.Results;

@@ -21,14 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
-    public ArrayList<Results> moviesList = new ArrayList<>();
+    private ArrayList<Results> moviesList = new ArrayList<>();
+    private OnMovieListener onMovieListener;
 
+    public MovieRecyclerViewAdapter(OnMovieListener onMovieListener) {
+        this.onMovieListener = onMovieListener;
+    }
 
     @NonNull
     @Override
     public MovieRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row, parent, false), onMovieListener);
     }
 
     @Override
@@ -37,7 +41,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         Results movie = moviesList.get(position);
         String posterLink = "https://image.tmdb.org/t/p/w500" + movie.getPoster_path();
 
-        holder.name.setText(movie.getOriginal_title());
+        holder.name.setText(movie.getTitle());
         holder.overview.setText(movie.getOverview());
 
         Picasso.get()
@@ -52,39 +56,37 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     }
 
 
-    public void setMoviesList(ArrayList<Results> list){
+    public void setMoviesList(ArrayList<Results> list) {
         this.moviesList = list;
         notifyDataSetChanged();
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView poster;
         TextView name;
         TextView overview;
+        OnMovieListener onMovieListener;
 
-        public ViewHolder(@NonNull final View view) {
+        public ViewHolder(@NonNull final View view, OnMovieListener onMovieListener) {
             super(view);
 
             poster = view.findViewById(R.id.moviePosterID);
             name = view.findViewById(R.id.movieNameID);
             overview = view.findViewById(R.id.movieOverviewID);
+            this.onMovieListener = onMovieListener;
 
-//            view.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    Movie movie = moviesList.get(getAdapterPosition());
-//
-//                    Intent intent = new Intent(context, MovieDetails.class);
-//
-//                    intent.putExtra("movie", movie);
-//                    ctx.startActivity(intent);
-//
-//
-//                }
-//        });
+            view.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onMovieListener.OnMovieClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnMovieListener {
+        void OnMovieClick(int position);
     }
 }

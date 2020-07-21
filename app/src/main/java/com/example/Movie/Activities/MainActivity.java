@@ -1,9 +1,12 @@
 package com.example.Movie.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -20,10 +23,13 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieRecyclerViewAdapter.OnMovieListener {
 
+    private static final String TAG = "TEST";
+    private ArrayList<Results> moviesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MoviesViewModel moviesViewModel;
+    MovieRecyclerViewAdapter movieRecyclerViewAdapter;
 
 
     @Override
@@ -31,27 +37,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         moviesViewModel = new ViewModelProvider(this).get(MoviesViewModel.class);
 
         moviesViewModel.getMovies();
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        final MovieRecyclerViewAdapter movieRecyclerViewAdapter = new MovieRecyclerViewAdapter();
-        recyclerView.setAdapter(movieRecyclerViewAdapter);
-        movieRecyclerViewAdapter.notifyDataSetChanged();
-
+        setAdapter();
 
         moviesViewModel.movieMutableLiveData.observe(this, new Observer<List<Results>>() {
             @Override
@@ -84,4 +74,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void setAdapter() {
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this);
+        recyclerView.setAdapter(movieRecyclerViewAdapter);
+        movieRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void OnMovieClick(int position) {
+        Log.d(TAG, "OnMovieClick: Clicked");
+    }
 }
