@@ -33,6 +33,7 @@ public class Results implements Parcelable {
 
     private String vote_count;
 
+
     protected Results(Parcel in) {
         overview = in.readString();
         original_language = in.readString();
@@ -176,7 +177,13 @@ public class Results implements Parcelable {
 
     @Override
     public String toString() {
-        return "ClassPojo [overview = " + overview + ", original_language = " + original_language + ", original_title = " + original_title + ", video = " + video + ", title = " + title + ", genre_ids = " + genre_ids + ", poster_path = " + poster_path + ", backdrop_path = " + backdrop_path + ", release_date = " + release_date + ", popularity = " + popularity + ", vote_average = " + vote_average + ", id = " + id + ", adult = " + adult + ", vote_count = " + vote_count + "]";
+        return "ClassPojo [overview = " + overview + ", original_language = "
+                + original_language + ", original_title = "
+                + original_title + ", video = " + video + ", title = "
+                + title + ", genre_ids = " + genre_ids + ", poster_path = "
+                + poster_path + ", backdrop_path = " + backdrop_path + ", release_date = "
+                + release_date + ", popularity = " + popularity + ", vote_average = "
+                + vote_average + ", id = " + id + ", adult = " + adult + ", vote_count = " + vote_count + "]";
     }
 
     @Override
