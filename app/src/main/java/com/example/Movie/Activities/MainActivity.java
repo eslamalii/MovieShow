@@ -2,12 +2,8 @@ package com.example.Movie.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -18,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Movie.Data.MovieRecyclerViewAdapter;
 import com.example.Movie.Model.Results;
 import com.example.Movie.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.Movie.Util.Constants;
+import com.example.Movie.ViewModel.MoviesViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +23,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MovieRecyclerViewAdapter.OnMovieListener {
 
     private static final String TAG = "TEST";
-    private ArrayList<Results> moviesList;
     private RecyclerView recyclerView;
     private MoviesViewModel moviesViewModel;
     MovieRecyclerViewAdapter movieRecyclerViewAdapter;
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
 
         moviesViewModel = new ViewModelProvider(this).get(MoviesViewModel.class);
 
-        moviesViewModel.getMovies();
+        moviesViewModel.getMovies(Constants.API, "popularity.desc");
 
         setAdapter();
 
@@ -89,9 +84,8 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     public void OnMovieClick(int position) {
         Results results = movieRecyclerViewAdapter.getMoviesList().get(position);
         Intent intent = new Intent(this, MovieDetails.class);
-        intent.putExtra("Movie Object", results);
+        intent.putExtra("Movie", Integer.parseInt(results.getId().trim()));
 
         startActivity(intent);
-//        Log.d(TAG, "OnMovieClick: Clicked" + movieRecyclerViewAdapter.getMoviesList().get(position).getTitle());
     }
 }

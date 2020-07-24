@@ -1,6 +1,4 @@
-package com.example.Movie.Activities;
-
-import android.util.Log;
+package com.example.Movie.ViewModel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,15 +14,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.ContentValues.TAG;
-
 public class MoviesViewModel extends ViewModel {
-    MutableLiveData<List<Results>> movieMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<Results>> movieMutableLiveData = new MutableLiveData<>();
 
 
 
-    public void getMovies() {
-        MoviesClient.getInstance().getMovies(Constants.API, "popularity.desc").enqueue(new Callback<Movie>() {
+    public void getMovies(String apiKey, String sort) {
+        MoviesClient.getInstance().getMovies(apiKey, sort).enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
                 Movie movie = response.body();

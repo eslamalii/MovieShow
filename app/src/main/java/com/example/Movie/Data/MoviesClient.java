@@ -1,10 +1,7 @@
 package com.example.Movie.Data;
 
 import com.example.Movie.Model.Movie;
-import com.example.Movie.Model.Results;
-import com.example.Movie.Util.Constants;
-
-import java.util.List;
+import com.example.Movie.Model.MovieDetailsObject;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -32,6 +29,10 @@ public class MoviesClient {
 
     public Call<Movie> getMovies(String API, String sort) {
         return moviesInterface.getMovies(API, sort);
+    }
+
+    public Call<MovieDetailsObject> getMoviesDetails(int movieId, String api) {
+        return moviesInterface.getMovieDetails(movieId, api);
     }
 
 }

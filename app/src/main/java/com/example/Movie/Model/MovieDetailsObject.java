@@ -2,14 +2,14 @@ package com.example.Movie.Model;
 
 import java.util.ArrayList;
 
-public class MovieDetails {
+public class MovieDetailsObject {
     private boolean adult;
     private String backdrop_path;
     Belongs_to_collection Belongs_to_collectionObject;
     private float budget;
     ArrayList< Object > genres = new ArrayList < Object > ();
     private String homepage;
-    private float id;
+    private int id;
     private String imdb_id;
     private String original_language;
     private String original_title;
@@ -52,7 +52,7 @@ public class MovieDetails {
         return homepage;
     }
 
-    public float getId() {
+    public int getId() {
         return id;
     }
 
@@ -138,7 +138,7 @@ public class MovieDetails {
         this.homepage = homepage;
     }
 
-    public void setId(float id) {
+    public void setId(int id) {
         this.id = id;
     }
 

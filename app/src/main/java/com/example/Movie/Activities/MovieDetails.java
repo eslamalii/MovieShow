@@ -8,10 +8,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Movie.Model.Movie;
-import com.example.Movie.Model.Results;
+import com.example.Movie.Model.MovieDetailsObject;
 import com.example.Movie.R;
+import com.example.Movie.Util.Constants;
+import com.example.Movie.ViewModel.DetailsViewModel;
 
 public class MovieDetails extends AppCompatActivity {
 
@@ -27,12 +31,14 @@ public class MovieDetails extends AppCompatActivity {
 
     private String movieId;
 
-    private ProgressBar progressBar;
+    private DetailsViewModel detailsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+
+        detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,13 +50,16 @@ public class MovieDetails extends AppCompatActivity {
         setUpUI();
 
         Intent intent = getIntent();
-        Results results = intent.getParcelableExtra("Movie Object");
+        int movieID = intent.getIntExtra("Movie", 0);
 
-        movieTitle.setText(results.getTitle());
-        movieYear.setText(results.getRelease_date());
-        overview.setText(results.getOverview());
-        runTime.setText(results.getPopularity());
-        tagline.setText(results.getAdult());
+        detailsViewModel.getMovieDetails(movieID, Constants.API);
+
+        detailsViewModel.detailsMutableLiveData.observe(this, new Observer<MovieDetailsObject>() {
+            @Override
+            public void onChanged(MovieDetailsObject movieDetailsObject) {
+                movieTitle.setText(movieDetailsObject.getTitle());
+            }
+        });
     }
 
     private void setUpUI () {
