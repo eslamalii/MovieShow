@@ -3,12 +3,15 @@ package com.example.Movie.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +22,7 @@ import com.example.Movie.Model.Results;
 import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
 import com.example.Movie.ViewModel.MoviesViewModel;
+import com.example.Movie.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +33,15 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     private RecyclerView recyclerView;
     private MoviesViewModel moviesViewModel;
     MovieRecyclerViewAdapter movieRecyclerViewAdapter;
-    ProgressBar progressBar;
+    ActivityMainBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        progressBar = findViewById(R.id.progressBar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         moviesViewModel = new ViewModelProvider(this).get(MoviesViewModel.class);
 
@@ -49,18 +53,16 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
             @Override
             public void onChanged(List<Results> movies) {
                 movieRecyclerViewAdapter.setMoviesList((ArrayList<Results>) movies);
-                progressBar.setVisibility(View.GONE);
+            }
+        });
 
+        moviesViewModel.busy.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.progressBar.setVisibility(integer);
             }
         });
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        progressBar.setVisibility(View.VISIBLE);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

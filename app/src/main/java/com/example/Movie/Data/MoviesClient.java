@@ -34,5 +34,4 @@ public class MoviesClient {
     public Call<MovieDetailsObject> getMoviesDetails(int movieId, String api) {
         return moviesInterface.getMovieDetails(movieId, api);
     }
-
 }
