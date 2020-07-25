@@ -2,8 +2,11 @@ package com.example.Movie.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -26,12 +29,15 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     private RecyclerView recyclerView;
     private MoviesViewModel moviesViewModel;
     MovieRecyclerViewAdapter movieRecyclerViewAdapter;
+    ProgressBar progressBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressBar = findViewById(R.id.progressBar);
 
         moviesViewModel = new ViewModelProvider(this).get(MoviesViewModel.class);
 
@@ -43,8 +49,16 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
             @Override
             public void onChanged(List<Results> movies) {
                 movieRecyclerViewAdapter.setMoviesList((ArrayList<Results>) movies);
+                progressBar.setVisibility(View.GONE);
+
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressBar.setVisibility(View.VISIBLE);
     }
 
 

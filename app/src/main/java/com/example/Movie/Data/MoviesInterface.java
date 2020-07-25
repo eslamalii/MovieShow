@@ -16,7 +16,6 @@ public interface MoviesInterface {
             @Query("sort_by") String sort);
 
 
-//    @GET("3/movie/{Movie_ID}?api_key=fd36c8251c4b668a206e976e0ca52a52&language=en-US")
     @GET("movie/{movie_id}")
     Call<MovieDetailsObject> getMovieDetails(
             @Path("movie_id") Integer movieId,
