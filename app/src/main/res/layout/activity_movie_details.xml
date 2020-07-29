@@ -6,6 +6,12 @@
     android:background="@color/dark"
     tools:context=".Activities.MovieDetails">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
     <include
         android:id="@+id/toolbar"
@@ -95,6 +101,4 @@
         android:layout_marginTop="5dp"
         android:paddingHorizontal="12dp"
         android:textColor="@color/white" />
-
-
 </RelativeLayout>

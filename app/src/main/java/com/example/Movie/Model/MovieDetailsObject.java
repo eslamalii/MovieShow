@@ -20,7 +20,7 @@ public class MovieDetailsObject {
     ArrayList < Object > production_countries = new ArrayList < Object > ();
     private String release_date;
     private float revenue;
-    private float runtime;
+    private int runtime;
     ArrayList < Object > spoken_languages = new ArrayList < Object > ();
     private String status;
     private String tagline;
@@ -88,7 +88,7 @@ public class MovieDetailsObject {
         return revenue;
     }
 
-    public float getRuntime() {
+    public int getRuntime() {
         return runtime;
     }
 
@@ -174,7 +174,7 @@ public class MovieDetailsObject {
         this.revenue = revenue;
     }
 
-    public void setRuntime(float runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
 

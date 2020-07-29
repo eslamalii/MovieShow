@@ -1,7 +1,6 @@
 package com.example.Movie.Data;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.Movie.Activities.MovieDetails;
-import com.example.Movie.Model.Movie;
+import com.bumptech.glide.Glide;
 import com.example.Movie.Model.Results;
 import com.example.Movie.R;
+import com.example.Movie.Util.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
     private ArrayList<Results> moviesList = new ArrayList<>();
-
-
 
     private OnMovieListener onMovieListener;
 
@@ -42,7 +38,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public void onBindViewHolder(@NonNull MovieRecyclerViewAdapter.ViewHolder holder, int position) {
 
         Results movie = moviesList.get(position);
-        String posterLink = "https://image.tmdb.org/t/p/w500" + movie.getPoster_path();
+        String posterLink = Constants.IMAGE_URL + movie.getPoster_path();
 
         holder.name.setText(movie.getTitle());
         holder.overview.setText(movie.getOverview());
@@ -50,7 +46,6 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         Picasso.get()
                 .load(posterLink)
                 .into(holder.poster);
-
     }
 
     @Override

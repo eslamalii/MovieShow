@@ -12,14 +12,26 @@ import retrofit2.Response;
 
 public class DetailsViewModel extends ViewModel {
     public MutableLiveData<MovieDetailsObject> detailsMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<Integer> busy;
 
-    public void getMovieDetails(int movieId, String apiKey){
+    public MutableLiveData<Integer> getBusy() {
+        if (busy == null) {
+            busy = new MutableLiveData<>();
+            busy.setValue(8);
+        }
+        return busy;
+    }
+
+    public void getMovieDetails(int movieId, String apiKey) {
+        getBusy().setValue(0);
         MoviesClient.getInstance().getMoviesDetails(movieId, apiKey).enqueue(new Callback<MovieDetailsObject>() {
             @Override
             public void onResponse(Call<MovieDetailsObject> call, Response<MovieDetailsObject> response) {
                 MovieDetailsObject movieDetails = response.body();
                 if (movieDetails != null)
                     detailsMutableLiveData.setValue(movieDetails);
+
+                getBusy().setValue(8);
             }
 
             @Override
