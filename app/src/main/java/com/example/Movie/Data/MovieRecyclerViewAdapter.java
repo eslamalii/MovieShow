@@ -1,6 +1,5 @@
 package com.example.Movie.Data;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +39,6 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
         Results movie = moviesList.get(position);
         String posterLink = Constants.IMAGE_URL + movie.getPoster_path();
 
-        holder.name.setText(movie.getTitle());
-        holder.overview.setText(movie.getOverview());
-
         Picasso.get()
                 .load(posterLink)
                 .into(holder.poster);
@@ -67,16 +63,16 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView poster;
-        TextView name;
-        TextView overview;
+        //        TextView name;
+//        TextView overview;
         OnMovieListener onMovieListener;
 
         public ViewHolder(@NonNull final View view, OnMovieListener onMovieListener) {
             super(view);
 
             poster = view.findViewById(R.id.moviePosterID);
-            name = view.findViewById(R.id.movieNameID);
-            overview = view.findViewById(R.id.movieOverviewID);
+//            name = view.findViewById(R.id.movieNameID);
+//            overview = view.findViewById(R.id.movieOverviewID);
             this.onMovieListener = onMovieListener;
 
             view.setOnClickListener(this);

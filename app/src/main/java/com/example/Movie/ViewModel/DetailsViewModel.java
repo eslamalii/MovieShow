@@ -23,7 +23,7 @@ public class DetailsViewModel extends ViewModel {
     }
 
     public void getMovieDetails(int movieId, String apiKey) {
-        getBusy().setValue(0);
+        getBusy().setValue(0); //visible
         MoviesClient.getInstance().getMoviesDetails(movieId, apiKey).enqueue(new Callback<MovieDetailsObject>() {
             @Override
             public void onResponse(Call<MovieDetailsObject> call, Response<MovieDetailsObject> response) {
@@ -31,7 +31,7 @@ public class DetailsViewModel extends ViewModel {
                 if (movieDetails != null)
                     detailsMutableLiveData.setValue(movieDetails);
 
-                getBusy().setValue(8);
+                getBusy().setValue(8); //invisible
             }
 
             @Override

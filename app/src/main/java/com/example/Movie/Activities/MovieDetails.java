@@ -3,6 +3,8 @@ package com.example.Movie.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,8 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
-import com.example.Movie.Model.Movie;
 import com.example.Movie.Model.MovieDetailsObject;
 import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso;
 
 public class MovieDetails extends AppCompatActivity {
 
-    private Movie movie;
     private TextView movieTitle;
     private ImageView coverImage;
     private ImageView posterImage;
@@ -31,8 +30,6 @@ public class MovieDetails extends AppCompatActivity {
     private TextView director;
     private TextView overview;
     private TextView tagline;
-
-    private String movieId;
 
     private DetailsViewModel detailsViewModel;
 
@@ -44,6 +41,8 @@ public class MovieDetails extends AppCompatActivity {
         binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        hideStatus();
 
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
 
@@ -97,5 +96,10 @@ public class MovieDetails extends AppCompatActivity {
 
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getBackdrop_path()).into(coverImage);
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getPoster_path()).into(posterImage);
+    }
+
+    private void hideStatus(){
+        Window view = getWindow();
+        view.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 }
