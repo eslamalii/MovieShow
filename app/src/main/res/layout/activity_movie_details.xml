@@ -4,6 +4,8 @@
     android:id="@+id/viewDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/CustomAppTheme"
+    android:fitsSystemWindows="true"
     android:background="@color/dark"
     tools:context=".Activities.MovieDetails">
 

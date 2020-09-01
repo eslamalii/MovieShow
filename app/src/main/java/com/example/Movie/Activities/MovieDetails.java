@@ -100,6 +100,7 @@ public class MovieDetails extends AppCompatActivity {
 
     private void hideStatus(){
         Window view = getWindow();
-        view.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        view.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
     }
+
 }
