@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
 
     private void setAdapter() {
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
         movieRecyclerViewAdapter = new MovieRecyclerViewAdapter(this);

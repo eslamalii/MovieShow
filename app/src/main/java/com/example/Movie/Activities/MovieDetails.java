@@ -1,13 +1,13 @@
 package com.example.Movie.Activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -42,8 +42,6 @@ public class MovieDetails extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        hideStatus();
-
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -63,7 +61,7 @@ public class MovieDetails extends AppCompatActivity {
         detailsViewModel.detailsMutableLiveData.observe(this, new Observer<MovieDetailsObject>() {
             @Override
             public void onChanged(MovieDetailsObject movieDetailsObject) {
-               setData(movieDetailsObject);
+                setData(movieDetailsObject);
             }
         });
 
@@ -80,27 +78,33 @@ public class MovieDetails extends AppCompatActivity {
         coverImage = findViewById(R.id.coverImageID);
         posterImage = findViewById(R.id.posterImageID);
         movieYear = findViewById(R.id.yearReleaseID);
-        director = findViewById(R.id.directedID);
         overview = findViewById(R.id.overviewID);
         runTime = findViewById(R.id.durationID);
         tagline = findViewById(R.id.tagLine);
 
     }
 
-    private void setData(MovieDetailsObject movieDetailsObject){
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setData(MovieDetailsObject movieDetailsObject) {
         movieTitle.setText(movieDetailsObject.getTitle());
-        movieYear.setText(movieDetailsObject.getRelease_date());
         overview.setText(movieDetailsObject.getOverview());
         runTime.setText(Integer.toString(movieDetailsObject.getRuntime()));
         tagline.setText(movieDetailsObject.getTagline());
+        movieYear.setText(movieDetailsObject.getRelease_date());
+
 
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getBackdrop_path()).into(coverImage);
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getPoster_path()).into(posterImage);
     }
 
-    private void hideStatus(){
-        Window view = getWindow();
-        view.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-    }
-
+//    private void setColor(){
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.id.coverImageID);
+//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+//            @Override
+//            public void onGenerated(@Nullable Palette palette) {
+//                int vibrantColor = palette.getVibrantColor(R.color.primary_500);
+//                collapsingToolbarLayout.set
+//            }
+//        });
+//    }
 }
