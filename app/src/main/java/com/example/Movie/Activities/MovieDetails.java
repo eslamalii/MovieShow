@@ -1,13 +1,11 @@
 package com.example.Movie.Activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -18,6 +16,7 @@ import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
 import com.example.Movie.ViewModel.DetailsViewModel;
 import com.example.Movie.databinding.ActivityMovieDetailsBinding;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetails extends AppCompatActivity {
@@ -48,7 +47,7 @@ public class MovieDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setUpUI();
@@ -84,14 +83,12 @@ public class MovieDetails extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setData(MovieDetailsObject movieDetailsObject) {
         movieTitle.setText(movieDetailsObject.getTitle());
         overview.setText(movieDetailsObject.getOverview());
         runTime.setText(Integer.toString(movieDetailsObject.getRuntime()));
         tagline.setText(movieDetailsObject.getTagline());
         movieYear.setText(movieDetailsObject.getRelease_date());
-
 
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getBackdrop_path()).into(coverImage);
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getPoster_path()).into(posterImage);
