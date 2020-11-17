@@ -16,12 +16,12 @@
         <activity
             android:name=".Activities.MovieDetails"
             android:parentActivityName=".Activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/BaseAppTheme" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar">
+            android:theme="@style/BaseAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

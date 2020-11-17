@@ -6,4 +6,6 @@
     <color name="white">#ffff</color>
     <color name="dark">#212529</color>
     <color name="primary_500">#3F51B5</color>
+    <color name="edge">#e5e5e5</color>
+    <color name="transparent">#80000000</color>
 </resources>

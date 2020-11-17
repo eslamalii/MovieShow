@@ -14,7 +14,9 @@ import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
     private ArrayList<Results> moviesList = new ArrayList<>();
@@ -65,6 +67,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
         ImageView poster;
         TextView movieName;
+//        TextView genres;
         OnMovieListener onMovieListener;
 
         public ViewHolder(@NonNull final View view, OnMovieListener onMovieListener) {
@@ -74,6 +77,7 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
             poster = view.findViewById(R.id.moviePosterID);
             movieName = view.findViewById(R.id.movieNameID);
+//            genres = view.findViewById(R.id.genresID);
 
             view.setOnClickListener(this);
         }
@@ -87,4 +91,5 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
     public interface OnMovieListener {
         void OnMovieClick(int position);
     }
+
 }

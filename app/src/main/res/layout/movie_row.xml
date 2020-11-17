@@ -22,7 +22,6 @@
                 android:id="@+id/moviePosterID"
                 android:layout_width="130dp"
                 android:layout_height="195dp"
-                android:layout_below="@+id/textName"
                 android:background="@color/dark" />
 
             <TextView
@@ -35,6 +34,15 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/genresID"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:layout_toEndOf="@id/moviePosterID"
+                android:layout_alignBottom="@id/moviePosterID"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
