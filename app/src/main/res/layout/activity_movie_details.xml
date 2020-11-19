@@ -20,25 +20,25 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/dark"
-            app:expandedTitleMarginStart="40dp"
             app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="40dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@id/app_bar">
 
             <ImageView
                 android:id="@+id/coverImageID"
-                android:background="@color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/transparent"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:fitsSystemWindows="true"
                 android:theme="@style/ToolbarColorBackArrow"
-                android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -59,8 +59,8 @@
 
             <ImageView
                 android:id="@+id/posterImageID"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_width="110dp"
+                android:layout_height="160dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="0dp"
@@ -117,10 +117,16 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="7dp"
                 android:fontFamily="sans-serif"
-                android:paddingHorizontal="19dp"
+                android:paddingHorizontal="18dp"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
+            <include
+                layout="@layout/cast_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/overviewID"
+                android:layout_marginTop="5dp" />
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>

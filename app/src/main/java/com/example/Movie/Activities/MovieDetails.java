@@ -4,20 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Movie.Data.CastRecyclerViewAdapter;
+import com.example.Movie.Model.Cast;
 import com.example.Movie.Model.MovieDetailsObject;
 import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
+import com.example.Movie.ViewModel.CastViewModel;
 import com.example.Movie.ViewModel.DetailsViewModel;
 import com.example.Movie.databinding.ActivityMovieDetailsBinding;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MovieDetails extends AppCompatActivity {
 
@@ -31,6 +40,10 @@ public class MovieDetails extends AppCompatActivity {
     private TextView tagline;
 
     private DetailsViewModel detailsViewModel;
+    private CastViewModel castViewModel;
+
+    private RecyclerView recyclerView;
+    CastRecyclerViewAdapter castRecyclerViewAdapter;
 
     ActivityMovieDetailsBinding binding;
 
@@ -42,6 +55,7 @@ public class MovieDetails extends AppCompatActivity {
         setContentView(view);
 
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
+        castViewModel = new ViewModelProvider(this).get(CastViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,11 +65,13 @@ public class MovieDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setUpUI();
+        setAdapter();
 
         Intent intent = getIntent();
         int movieID = intent.getIntExtra("Movie", 0);
 
         detailsViewModel.getMovieDetails(movieID, Constants.API);
+        castViewModel.getMovieCast(movieID, Constants.API);
 
         detailsViewModel.detailsMutableLiveData.observe(this, new Observer<MovieDetailsObject>() {
             @Override
@@ -68,6 +84,13 @@ public class MovieDetails extends AppCompatActivity {
             @Override
             public void onChanged(Integer integer) {
                 binding.progressBar.setVisibility(integer);
+            }
+        });
+
+        castViewModel.castLiveData.observe(this, new Observer<List<Cast>>() {
+            @Override
+            public void onChanged(List<Cast> casts) {
+                castRecyclerViewAdapter.setMovieCasting((ArrayList<Cast>) casts);
             }
         });
     }
@@ -92,6 +115,17 @@ public class MovieDetails extends AppCompatActivity {
 
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getBackdrop_path()).into(coverImage);
         Picasso.get().load(Constants.IMAGE_URL + movieDetailsObject.getPoster_path()).into(posterImage);
+    }
+
+    private void setAdapter(){
+        recyclerView = findViewById(R.id.recyclerViewCast);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setHasFixedSize(true);
+
+        castRecyclerViewAdapter = new CastRecyclerViewAdapter();
+        recyclerView.setAdapter(castRecyclerViewAdapter);
+        castRecyclerViewAdapter.notifyDataSetChanged();
+
     }
 
 //    private void setColor(){

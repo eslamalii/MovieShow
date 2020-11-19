@@ -1,5 +1,6 @@
 package com.example.Movie.Data;
 
+import com.example.Movie.Model.CastData;
 import com.example.Movie.Model.Movie;
 import com.example.Movie.Model.MovieDetailsObject;
 
@@ -33,5 +34,9 @@ public class MoviesClient {
 
     public Call<MovieDetailsObject> getMoviesDetails(int movieId, String api) {
         return moviesInterface.getMovieDetails(movieId, api);
+    }
+
+    public Call<CastData> getMoviesCast(int movieId, String api) {
+        return moviesInterface.getMovieCredits(movieId, api);
     }
 }
