@@ -1,4 +1,4 @@
-package com.example.Movie.Data;
+ package com.example.Movie.Data;
 
 import android.view.LayoutInflater;
 import android.view.View;

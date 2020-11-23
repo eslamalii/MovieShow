@@ -1,17 +1,14 @@
 package com.example.Movie.Activities;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Movie.Data.MovieRecyclerViewAdapter;
 import com.example.Movie.Model.Results;
 import com.example.Movie.R;
+import com.example.Movie.Util.BroadcastReceiverCnn;
 import com.example.Movie.Util.Constants;
 import com.example.Movie.ViewModel.MoviesViewModel;
 import com.example.Movie.databinding.ActivityMainBinding;
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
     private MoviesViewModel moviesViewModel;
     MovieRecyclerViewAdapter movieRecyclerViewAdapter;
     ActivityMainBinding binding;
-
+    BroadcastReceiverCnn receiver = new BroadcastReceiverCnn();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,5 +101,18 @@ public class MainActivity extends AppCompatActivity implements MovieRecyclerView
         intent.putExtra("Movie", Integer.parseInt(results.getId().trim()));
 
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(receiver);
     }
 }
