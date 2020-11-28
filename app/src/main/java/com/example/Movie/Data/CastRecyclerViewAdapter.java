@@ -1,6 +1,5 @@
 package com.example.Movie.Data;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.example.Movie.Util.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,8 +61,9 @@ public class CastRecyclerViewAdapter extends RecyclerView.Adapter<CastRecyclerVi
         }
     }
 
-    public void setMovieCasting(ArrayList<Cast> casts){
+    public void setMovieCasting(ArrayList<Cast> casts) {
         this.castDataList = casts;
         notifyDataSetChanged();
     }
+
 }

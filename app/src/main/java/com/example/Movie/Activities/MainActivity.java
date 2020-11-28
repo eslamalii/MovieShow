@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;

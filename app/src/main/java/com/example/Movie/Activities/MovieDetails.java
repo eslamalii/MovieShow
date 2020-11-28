@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Movie.Data.CastRecyclerViewAdapter;
 import com.example.Movie.Model.Cast;
+import com.example.Movie.Model.Crew;
 import com.example.Movie.Model.MovieDetailsObject;
 import com.example.Movie.R;
 import com.example.Movie.Util.Constants;
@@ -93,6 +94,7 @@ public class MovieDetails extends AppCompatActivity {
                 castRecyclerViewAdapter.setMovieCasting((ArrayList<Cast>) casts);
             }
         });
+
     }
 
     private void setUpUI() {
